@@ -29,7 +29,7 @@ The peace and prosperity that we encountered in developped countries of the Nort
 
 While most people agree about the uncertainty of the next hundred years, we still have yet to agree on a solution. Some of which are more oriented towards a progressive society, while others prefer a more conservative approach. While multiple point of view rely on economic and environmental claims to base their theories on, some others are based on hate and fear of the difference, hate and fear of the change we might need to forge a more inclusive society. In order to better tackle the issues we face, we need to understand how these ideologies are gaining more traction inside the public debate, to observe how they might shape the minds of citizens. 
 
-// Propal : on enlève ce paragraphe avec l'ajout de ce qu'il y a au début.
+// Propal : on enlève ce paragraphe avec l'ajout de ce qu'il y a au début. Nickel la propal
 // In particular, far-right extremism has found a new echo in many Occidental societies, notably in the US **[[3]](#bibliography)**, partly made possible due to online forums. Forums like 4chan, 8kun etc have revealed to be a large alt-right ideology gathering **[[4]](#bibliography)**, useful to extract reccuring topics and vocabulary that suggest alt-right speech.
 
 We have talked a lot about the rise of hate speech on the internet and in public discussions, but in order to take home some conclusions about the consequences on the real-world politics, we also have to analyze a factor that shapes more than others the political landscape of our society: the Press. While people spread more hate speech, it is critical to assess how the media relays that information and in which proportion,  Moreover, we will also investigate if this rise of hate speech in the media could be correlated with real-world events and attacks linked with alt-right extremists motivated by the same ideas we can find in some flagged quotes. Both a rise of hate speech discussion in the press and a rise in far-right extremist attacks are a factor and a symptom of the rise of hatred in the public debate, which we desperately need to address.
@@ -54,6 +54,10 @@ In order to build our timeline, we plan on using the Washington Post study of th
 <!-- METHODS -->
 ## Methods
 
+![image](Figure.png)
+
+_Figure 1: Pipeline of our data_
+
 Our pipeline is designed in 3 majors steps. We first [extract](#data-extraction-and-exploration) the corresponding datasets unprocessed for data exploration. A preliminary analysis of the data has led us to the [preprocessing](#preprocessing) rules we established to only keep relevent data for our study.
 The actual study is divided in multiple approaches. The first of which is a quantitative study of the number of occurences of certain expressions to better build a timeline, putting it in perspective with major political events that shaped the far-right speech spread (Donald Trump presidency, the Charlottesville terrorist attack...).
 For our second approach, we are interested in looking at a more qualitative approach, where we actually look at the content of each quote. Using Natural Language Processing (NLP) techniques, some related papers built datasets and models able to predict the hatefulness of a sentence **[[2]](#bibliography)**. This would allow us to get a way to include context for the determination of the "hatefulness" of a quote, not only relying on keywords.
@@ -66,11 +70,6 @@ Another approach would be to check if our model can build a profile on a news ou
 ### Data Extraction and Exploration
 
 With an initial analysis, we identified several interesting values for the dataset, orienting our choices for the preprocessing step.
-
-![image](Figure.png) \\
-
-
-_Figure 1: Distribution of the number of occurences per quotes in a sample of the 2020 Quotebank dataset_
 
 We studied the distribution of the number of occurences per quotes in the dataset, and we can see that most of the quotes are cited once. Our analysis is focused on the spread of hate ideology among the population, thus highly cited in the media, which show a trend in the public debate. A quote with only one occurence cannot be considered as crucial in the public debate. Moreover, we observed that some quotes with 1 occurence can be attributed to errors.
 
