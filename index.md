@@ -52,11 +52,14 @@ In order to build our timeline, we plan on using the Washington Post study of th
 
 
 <!-- METHODS -->
-## Methods
+## Data story
 
 ![image](Figure.png)
 
 _Figure 1: Pipeline of our data_
+
+//Je pense on enlève tout après ça et on décrit un peu ce qui se passe dans le visuel
+// ensuite on fait une partie trois Analysis avec Hyptohese et résultat ? 
 
 Our pipeline is designed in 3 majors steps. We first [extract](#data-extraction-and-exploration) the corresponding datasets unprocessed for data exploration. A preliminary analysis of the data has led us to the [preprocessing](#preprocessing) rules we established to only keep relevent data for our study.
 The actual study is divided in multiple approaches. The first of which is a quantitative study of the number of occurences of certain expressions to better build a timeline, putting it in perspective with major political events that shaped the far-right speech spread (Donald Trump presidency, the Charlottesville terrorist attack...).
