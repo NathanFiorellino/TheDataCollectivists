@@ -67,7 +67,7 @@ Another approach would be to check if our model can build a profile on a news ou
 
 With an initial analysis, we identified several interesting values for the dataset, orienting our choices for the preprocessing step.
 
-![graph](img/graph.png) \\
+![image](Figure.png) \\
 
 
 _Figure 1: Distribution of the number of occurences per quotes in a sample of the 2020 Quotebank dataset_
