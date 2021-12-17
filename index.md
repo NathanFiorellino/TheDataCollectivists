@@ -18,7 +18,7 @@
 * [Bibliography](#bibliography)
 
 
-![image](Figure1.png)
+![image](ALT_RIGHT.jpg)
 
 _Figure 1: Alt-Right Rally_
 
