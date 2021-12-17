@@ -1,4 +1,5 @@
-# <ins>This project is the work of :</ins> Nathan Girard, Clémentine Lévy-Fidel, Camil Hamdane, Nathan Fiorellino
+# This project is the work of :
+## **Nathan Girard**, **Clémentine Lévy-Fidel**, **Camil Hamdane**, **Nathan Fiorellino**
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -14,6 +15,7 @@
   * [Second Filtering](#Second_Filtering)
   * [Sentiment Analysis](#Sentiment_Analysis)
   * [Parquet](#Parquet)
+* [We stare at the data until it reveals its all secrets](#We_stare_at_the_data_until_it_reveals_all_its secrets)
 * [Built With](#built-with)
 * [Bibliography](#bibliography)
 
@@ -26,27 +28,27 @@ _Figure 1: Alt-Right Rally_
 
 With communication on social media and online board becoming ubiquitous, some schools of thoughts that were traditionnally absent from traditional media, have found a new home online. In spite of the necessity of such a space for the foundation of a democracy, internet is also hosting harmful content and ideas. With the recent COVID-19 pandemic, we have spent a lot more time online during which we saw a lot more conspiracy theories and fake news surrounding the sanitary crisis. The theories and ideas that spread on the internet often overlap with right-wing extremism and alt-right beliefs, which saw a net rise over this period **[5](#bibliography)**. We believe this rise of alt-right ideas is correlated with the important rise of hate speech online during the pandemic, which stands at a 38% increase of instances of or discussions about hate speech on the internet from March 2020 to the summer of 2021 **[6](#bibliography)**. Before moving on, let us backtrack a little and define the vocabulary of interest:
 
-> The Cambridge dictionnary defines **hate speech** as a public speech that expresses hate or encourages violence towards a person or group based on something such as race, religion, sex, or sexual orientation. 
-> 
+> The Cambridge dictionary defines **hate speech** as a public speech that expresses hate or encourages violence towards a person or group based on something such as race, religion, sex, or sexual orientation.
+>
 > It defines alt-right by people with extreme conservative views, including extreme views about race, who reject ordinary politics and use the internet to spread their opinions.
 
 The peace and prosperity that we encountered in developped countries of the North in the last century has led many nations in a path of constant technological progress and economic growth. This prosperity however might be threatened by global issues that not only jeopardize the economy, but also the future of humanity. The recent COVID-19 pandemic has shown once more how the current socio-economic system ubiquitous in most occidental democracies has potentially fatal flaws that we need to address before it is crushed under its own weight.
 
-While most people agree about the uncertainty of the next hundred years, we still have yet to agree on a solution. Some of which are more oriented towards a progressive society, while others prefer a more conservative approach. While multiple point of view rely on economic and environmental claims to base their theories on, some others are based on hate and fear of the difference, hate and fear of the change we might need to forge a more inclusive society. In order to better tackle the issues we face, we need to understand how these ideologies are gaining more traction inside the public debate, to observe how they might shape the minds of citizens. 
+While most people agree about the uncertainty of the next hundred years, we still have yet to agree on a solution. Some of which are more oriented towards a progressive society, while others prefer a more conservative approach. While multiple point of view rely on economic and environmental claims to base their theories on, some others are based on hate and fear of the difference, hate and fear of the change we might need to forge a more inclusive society. In order to better tackle the issues we face, we need to understand how these ideologies are gaining more traction inside the public debate, to observe how they might shape the minds of citizens.
 
 We have talked a lot about the rise of hate speech on the internet and in public discussions, but in order to take home some conclusions about the consequences on the real-world politics, we also have to analyze a factor that shapes more than others the political landscape of our society: the Press. While people spread more hate speech, it is critical to assess how the media relays that information and in which proportion,  Moreover, we will also investigate if this rise of hate speech in the media could be correlated with real-world events and attacks linked with alt-right extremists motivated by the same ideas we can find in some flagged quotes. Both a rise of hate speech discussion in the press and a rise in far-right extremist attacks are a factor and a symptom of the rise of hatred in the public debate, which we desperately need to address.
 We are interested today about the rise of far-right extremism speech **between 2016 and 2020**, observed through a dataset of quotes from the press, highlighting the evolution of opinions and ideas that shape the past, present, and the future of our society.
 
 ### Research questions and hypothesis
 
-Is far-right extremism speech on the rise since 2016 ? How accurately can we identify a trend with the Quotebank dataset, when put in perspective with right-wing extremist terrorist attacks ? Can we highlight some news outlets and personnalities that spread hate speech more than other, and if so, is it consistent over the years ? Is it also consistent with their political opinions ? 
-Our team is composed of strong believers of equality and justice for all, especially in the early twentieth century where climate change and inequalities brought by excessive consumption threaten the stability of our society. We believe that right-wing extremism and hate speech is not helping us solving these issues as it is on the rise. We state as our initial null hypothesis that hate speech is staying constant in the public debate, and is not on the rise. 
+Is far-right extremism speech on the rise since 2016 ? How accurately can we identify a trend with the Quotebank dataset, when put in perspective with right-wing extremist terrorist attacks ? Can we highlight some news outlets and persnnalities that spread hate speech more than other, and if so, is it consistent over the years ? Is it also consistent with their political opinions ?
+Our team is composed of strong believers of equality and justice for all, especially in the early twentieth century where climate change and inequalities brought by excessive consumption threaten the stability of our society. We believe that right-wing extremism and hate speech is not helping us solving these issues as it is on the rise. We state as our initial null hypothesis that hate speech is staying constant in the public debate, and is not on the rise.
 
 ### Data
 #### Quotebank
-[Quotebank](https://zenodo.org/record/4277311#.YYqEUGXPxb8), an open corpus of 178 million quotations attributed to the speakers who uttered them, extracted from 162 million English news articles published between 2008 and 2020. To narrow down our study, we will focus on the time period between 2016 and 2020, an interval where major political events shaped the way far-right extremism is spreading in the media, while limiting the size of the dataset. 
+[Quotebank](https://zenodo.org/record/4277311#.YYqEUGXPxb8), an open corpus of 178 million quotations attributed to the speakers who uttered them, extracted from 162 million English news articles published between 2008 and 2020. To narrow down our study, we will focus on the time period between 2016 and 2020, an interval where major political events shaped the way far-right extremism is spreading in the media, while limiting the size of the dataset.
 
-#### Hatebase 
+#### Hatebase
 [Hatebase](https://hatebase.org/) is a dataset summarizing more than 3800 unique words in 98 different languages, that are documented in online discussions and real-world occurences, with a constant monitoring for a total of more than 800,000 sightings in different regions of the world and internet. In order to better distinguish hate speech from the rest, we needed a dictionnary of hateful words that tends to be less biased than a homemade one for its collaborative nature.
 
 #### CSIS database (Washington Post subset)
@@ -74,11 +76,19 @@ Moreover, as the Quobert algorithm sometimes struggles associating a unique spea
 
 ### Second Filtering
 
+As we are interested in quotes containing hate speech, we apply a second filtering on the whole corpus of quotes, by extracting the **quotes containing a hateful keyword** 
+
+
+
 
 ### Sentiment Analysis
 
+*Pretrained Model*:
+Lexical detection methods tend to have low precision because they classify all messages containing particular terms as hate speech and previous work using supervised learning has failed to distinguish between the two categories. We chose to use a pretrained model suited for hate speech detection called [Perspective API](https://www.perspectiveapi.com/). In particular, we will use the “Severe toxicity” metric as it is the most precise for our task [7].
+
 ### Parquet
 
+## We stare at the data until it reveals **all** its secrets
 
 ## Built With
 
@@ -95,3 +105,5 @@ Moreover, as the Quobert algorithm sometimes struggles associating a unique spea
 4. Baele, S. J., Brace, L., & Coan, T. G. (2021). Variations on a Theme? Comparing 4chan, 8kun, and Other chans’ Far-Right “/pol” Boards. Perspectives on Terrorism, 15(1), 65-80.
 5. Patriotism, Pandemic, and Precarity: How the Alt-Right and White Nationalist Movement Used the Pandemic [link](https://ecommons.udayton.edu/human_rights/2021/schedule/28/)
 6. Ditch the label and Brandwatch - Uncovered: Online Hate speech in the Covid era. [link](https://www.brandwatch.com/reports/online-hate-speech/view/)
+7. Zannettou, Savvas, Mai Elsherief, Elizabeth Belding, Shirin Nilizadeh, et Gianluca Stringhini. « Measuring and Characterizing Hate Speech on News Websites ». In 12th ACM Conference on Web Science, 125‑34. Southampton United Kingdom: ACM, 2020.
+
