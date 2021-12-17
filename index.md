@@ -128,7 +128,7 @@ Our first analysis, although superficial, we already have good insight on the da
 Going deeper in this analysis, we wanted to study which individuals are most prone to hate speech. In this sense, we can see that the “famous” people are most represented, as depicted in the pie charts below. Indeed, politicians are shown to be the individuals whose speech contains the most hate, such as the last american president Donald Trump and the actual president of the Philippines, Rodrigo Duterte. Another class of individuals is represented by singers, such as Taylor Swift. It could make sense as people in the music industry are known to be the source of a lot of disputes, especially among artists. 
  ![sentiment_speakers](Sentiment_speakers.png)
 Lastly, we can observe the global sentiment of the quotes extracted with the hatebase. The individuals depicted in those charts represent the ones with the most hate quotes, which can be seen in the figure above. 
-![max_hate_quotes](Speakers_with_max_hate_quotes)
+![max_hate_quotes](Speakers_with_max_hate_quotes.png)
 
 ## Chapter 3 : Correlation between major events and variation in Hate speech relay
 The CSIS and Washington Post study provided the evolution of violent terrorist attacks in the US since 2016, with their corresponding attached political orientation. When observing the repartition of these violent attacks we can not clearly see a particular evolution over time, if it isn't a global decrease of left wing attacks. On the figures we can see both total violent crimes per month and violent crimes per month divided between far left and far right :
