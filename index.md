@@ -15,7 +15,7 @@
   * [Second Filtering](#Second_Filtering)
   * [Sentiment Analysis](#Sentiment_Analysis)
   * [Parquet](#Parquet)
-* [We stare at the data until it reveals its all secrets](#We_stare_at_the_data_until_it_reveals_all_its secrets)
+* [We stare at the data until it reveals its all secrets](#We_stare_at_the_data_until_it_reveals_all_its_secrets)
 * [Built With](#built-with)
 * [Bibliography](#bibliography)
 
