@@ -15,6 +15,10 @@
   * [Second Filtering](#Second-Filtering)
   * [Who are the speakers?](#Speakers)
   * [Sentiment Analysis](#Sentiment-Analysis)
+* []
+  * [Chapter 1: Attributes of speakers associated to hateful quotes](#Chapter_1:_Attributes_of_speakers_associated_to_hateful_quotes)
+  * [Chapter 2 : Hate speech is on the rise since 2016 ](#Chapter_2_:_Hate_speech_is_on the_rise_since_2016)
+  * [Chapter 3 : Correlation between major events and variation in Hate speech relay](#Chapter_3_:_Correlation_between_major_events_and_variation_in_Hate_speech relay)
 * [Built With](#built-with)
 * [Bibliography](#bibliography)
 
@@ -83,22 +87,48 @@ As we are interested in quotes containing hate speech, we apply a second filteri
 
 This filtering reduces drastically the size of the total dataset, from more than 1,800,000 quotes to 1445 quotes (we will come back to this result later). 
 
+### Hate topics presence
+But what are the hate quotes directed towards? We can answer that by using a very useful feature: the 'is_about' columns, that collect the topic associated with the word that made a quote be detected by the hateframe extraction.
+By summing all the one hot values over the 9 hate topics (namely: nationalitym ethnicity, religion, gender, sexual orientation, disability, and social class), we notice that some topics receive more hateful quotes than others, namely ethnicity (which suggests racist speech) and gender (which suggests sexism).
+
+
 
 ### Sentiment Analysis
 
-After the second filtering with the hatebase, we ran a sentiment analysis on the remaining quotes in order to better narrow down hate speech. This has allowed us to 
+After the second filtering with the hatebase, we ran a sentiment analysis on the remaining quotes in order to better narrow down hate speech. This has allowed us to distinguish overall “positive” versus “negative” quotes, in the context of the sentiment analysis. Here is a sample of positive quotes, with labeled hate keywords:
 
+> being a black queer woman in america someone who has been in relationships with both men and women  i consider myself to be a free motherfucker 
+> no bitch im just getting fat let me fat in peace
+
+And some “negative” sentiment hateful quotes, more of interest in our study: 
+
+> an absolute bitch who should leave the country
+> journalists are the biggest whores on the planet 
+
+As we can see, an identification of quotes with the hatebase dataset is not sufficient for identifying hateful quotes, and the sentiment analysis is essential for further getting information about the hatefulness.
+
+Our group was also willing to run an analysis with a pretrained model suited for the identification of hate speech, but due to API request limits imposed by Google, we could not hope to run such an analysis on hundreds of thousands of quotes, and thus had to rely on this sentiment analysis study on quotes labeled by keywords.
+.
 
 ### Speakers information
 
 But who are the people uttering hate speech? Information about the speakers can be found via their Wikidata QID. Wikidata are stored as a parquet file, containing attributes like the different aliases for a speaker, their date of birth, nationality, gender, ethnic group, US congress identifier, occupation, party, academic degree, candidacy, or religion. From intuition, we decide to discard attributes like US congress identifiers, candidacy or academic degree, as they only concern a small fraction of the speaker population. Whether about these discarded attributes or the remaining ones, a problem remains: the fact that not all attributes are registered in the database, even if they exist, so we must keep careful when analyzing the proportions of certain categories. But let's dive into the metadata!
 Before anything else, adding the metadata allows us to get rid of non plausible quotes from the quotes dataframe, i.e. quotes related to speakers born before 1910 (we assume that there can still be living centenarians).
+# We  stare at the data until it reveals *all” its secrets
+
+## Chapter 1: Attributes of speakers associated to hateful quotes
 Now we can look at the attribute distributions. The most delicate ones are gender, nationality, ethnic group, religion and party. We verify how much (or how not much) represented they are. We observe that we have:
 ![image](attributes.png)
 
 As we hypothesized, some attributes are not very relevant as they are not represented for the majority of the speakers. This concerns especially ethnic group, religion and political party, so we will not try to draw conclusions from these attributes.
 But it's not the only comment we can make from these observations. A reason why it would be hard to cluster the quotes to simple, englobing categories of speakers, is because there are several dozens of different values for each category, which makes that the speakers are very diverse!
 Looking more closely at the values, we notice that, for example, the most present ethnic groups are Cuban Americans, which is surprising and would most probably stem from previous filtering. The same goes even for the attributes we thought would be more useful, like gender and nationality: the most present values are groups that are usually minorities. It is striking in the case of gender: speakers labeled as male are 5, speakers labeled as women are actually one, but there are 234 speakers labeled as transgender male and 684 speakers labeled as genderqueer. This first raises the question: are minorities more hateful? A question to which we could bring the following explanations: either our hate speech filter is not specific enough, or minorities aren't hateful _per se_ but would tend to use more offensive language, and thus be detected as hateful speakers. One reason often studied is the reappropriation of insults, for example in the context of LGBTQI+ movements **[[8]](#bibliography)** or in the language used in rap music. More generally, it leads to the fact that not all offensive speech is intended as directly hateful, a problem often encountered with automated speech detection **[[9]](#bibliography)**.
+## Chapter 2 : Hate speech is on the rise since 2016  
+Our first analysis, although superficial, we already have good insight on the data that we ectracted. Indeed, the histograms below shows the statistics on hate quotes only, and displays also the proportion of hate among the prep
+ ![statistics_hate](statistics_hate_quotes.png)
+
+## Chapter 3 : Correlation between major events and variation in Hate speech relay
+The CSIS and Washington Post study provided the evolution of violent terrorist attacks in the US since 2016, with their corresponding attached political orientation. We can observe a trend over the last few years that 
 
 
 ## Built With
