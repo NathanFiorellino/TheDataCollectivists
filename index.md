@@ -1,4 +1,4 @@
-# _This project is the work of :_ Nathan Girard, Clémentine Lévy-Fidel, Camil Hamdane, Nathan Fiorellino
+# <ins>This project is the work of :</ins> Nathan Girard, Clémentine Lévy-Fidel, Camil Hamdane, Nathan Fiorellino
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
