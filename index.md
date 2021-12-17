@@ -16,7 +16,7 @@
   * [Who are the speakers?](#Speakers)
   * [Sentiment Analysis](#Sentiment-Analysis)
 * [We stare at the data until it reveals all its secrets](#We_stare_at_the_data_until_it_reveals_all_its_secrets)
-  * [Chapter 1: Attributes of speakers associated to hateful quotes](#Chapter_1:_Attributes_of_speakers_associated_to_hateful_quotes)
+  * [Chapter 1 : Attributes of speakers associated to hateful quotes](#Chapter_1_:_Attributes_of_speakers_associated_to_hateful_quotes)
   * [Chapter 2 : Hate speech is on the rise since 2016 ](#Chapter_2_:_Hate_speech_is_on the_rise_since_2016)
   * [Chapter 3 : Correlation between major events and variation in Hate speech relay](#Chapter_3_:_Correlation_between_major_events_and_variation_in_Hate_speech relay)
 * [Built With](#built-with)
@@ -116,7 +116,7 @@ But who are the people uttering hate speech? Information about the speakers can 
 Before anything else, adding the metadata allows us to get rid of non plausible quotes from the quotes dataframe, i.e. quotes related to speakers born before 1910 (we assume that there can still be living centenarians).
 # We  stare at the data until it reveals *all* its secrets
 
-## Chapter 1: Attributes of speakers associated to hateful quotes
+## Chapter 1 : Attributes of speakers associated to hateful quotes
 Now we can look at the attribute distributions. The most delicate ones are gender, nationality, ethnic group, religion and party. We verify how much (or how not much) represented they are. We observe that we have:
 ![image](attributes.png)
 
