@@ -15,7 +15,7 @@
   * [Second Filtering](#Second-Filtering)
   * [Who are the speakers?](#Speakers)
   * [Sentiment Analysis](#Sentiment-Analysis)
-* []
+* [We stare at the data until it reveals all its secrets](#We_stare_at_the_data_until_it_reveals_all_its_secrets)
   * [Chapter 1: Attributes of speakers associated to hateful quotes](#Chapter_1:_Attributes_of_speakers_associated_to_hateful_quotes)
   * [Chapter 2 : Hate speech is on the rise since 2016 ](#Chapter_2_:_Hate_speech_is_on the_rise_since_2016)
   * [Chapter 3 : Correlation between major events and variation in Hate speech relay](#Chapter_3_:_Correlation_between_major_events_and_variation_in_Hate_speech relay)
@@ -128,7 +128,7 @@ Our first analysis, although superficial, we already have good insight on the da
  ![statistics_hate](statistics_hate_quotes.png)
 Going deeper in this analysis, we wanted to study which individuals are most prone to hate speech. In this sense, we can see that the “famous” people are most represented, as depicted in the pie charts below. Indeed, politicians are shown to be the individuals whose speech contains the most hate, such as the last american president Donald Trump and the actual president of the Philippines, Rodrigo Duterte. Another class of individuals is represented by singers, such as Taylor Swift. It could make sense as people in the music industry are known to be the source of a lot of disputes, especially among artists. 
  ![sentiment_speakers](Sentiment_speakers.png)
-Lastly, we can observe the global
+Lastly, we can observe the global sentiment of the quotes extracted with the hatebase. The individuals depicted in those charts represent the ones with the most hate quotes, which can be seen in the figure above. 
 ![max_hate_quotes](Speakers_with_max_hate_quotes)
 ## Chapter 3 : Correlation between major events and variation in Hate speech relay
 The CSIS and Washington Post study provided the evolution of violent terrorist attacks in the US since 2016, with their corresponding attached political orientation. When observing the repartition of these violent attacks we can not clearly see a particular evolution over time, if it isn't a global decrease of left wing attacks. On the figures we can see both total violent crimes per month and violent crimes per month divided between far left and far right :
@@ -143,7 +143,8 @@ After the computing of the correlation between the two variables, we see that th
 ## Conclusion and discussion
 
 Despite our efforts, we could not precisely observe a trend over the rise of hate speech in the media, and neither a correlation between violent far-right attacks and this hateful speech. After the second filtering, we saw our data significantly decrease to a number mostly comprising marginal quotes keeping a constant trend, with the most meaningfully hateful quotes coming from alt-right politicians. This has led us to believe that our data processing is flawed from the beginning, up to our initial hypotheses. Indeed, we wanted to focus on the quotes and news outlets that shaped the political landscape the most, with a significant cut on some quotes that could have been said by anonymous voices. Some of the most hateful comments don’t come directly from politicians, but rather from independant hateful partisans of alt-right ideology. 
-Moreover, the filtering of quotes using the hatebase and sentiment analysis
+We can still however affirm that hateful violent attacks are on the rise, especially with the past presidency in the US, which arguably is translated in a rise in a lot of different domains, from hate speech in the media to the rise of far-right ideas in the whole political landscape.
+In order to fight hateful ideas and politics, it is essential to identify it wherever it spread its legs, and inform about the 
 
 ## Built With
 
