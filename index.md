@@ -85,11 +85,11 @@ As we are interested in quotes containing hate speech, we apply a second filteri
 
 ![image](sample_hateframe.png)
 
-This filtering reduces drastically the size of the total dataset, from more than 1,800,000 quotes to 1445 quotes (we will come back to this result later). 
+This filtering reduces drastically the size of the total dataset, from more than 1,800,000 quotes to 1445 quotes. We have also modified the initial hatebase dataset, with a cut on some of the less seen keywords, going from 1600 to less than a thousand. This has allowed us to better narrow the most used hateful words, getting rid of some obscure and context-specific slur words. 
 
 ### Hate topics presence
 But what are the hate quotes directed towards? We can answer that by using a very useful feature: the 'is_about' columns, that collect the topic associated with the word that made a quote be detected by the hateframe extraction.
-By summing all the one hot values over the 9 hate topics (namely: nationalitym ethnicity, religion, gender, sexual orientation, disability, and social class), we notice that some topics receive more hateful quotes than others, namely ethnicity (which suggests racist speech) and gender (which suggests sexism).
+By summing all the one hot values over the 7 hate topics (nationality, ethnicity, religion, gender, sexual orientation, disability, and social class), we notice that some topics receive more hateful quotes than others, namely ethnicity (which suggests racist speech) and gender (which suggests sexism).
 
 
 
@@ -114,7 +114,7 @@ Our group was also willing to run an analysis with a pretrained model suited for
 
 But who are the people uttering hate speech? Information about the speakers can be found via their Wikidata QID. Wikidata are stored as a parquet file, containing attributes like the different aliases for a speaker, their date of birth, nationality, gender, ethnic group, US congress identifier, occupation, party, academic degree, candidacy, or religion. From intuition, we decide to discard attributes like US congress identifiers, candidacy or academic degree, as they only concern a small fraction of the speaker population. Whether about these discarded attributes or the remaining ones, a problem remains: the fact that not all attributes are registered in the database, even if they exist, so we must keep careful when analyzing the proportions of certain categories. But let's dive into the metadata!
 Before anything else, adding the metadata allows us to get rid of non plausible quotes from the quotes dataframe, i.e. quotes related to speakers born before 1910 (we assume that there can still be living centenarians).
-# We  stare at the data until it reveals *all” its secrets
+# We  stare at the data until it reveals *all* its secrets
 
 ## Chapter 1: Attributes of speakers associated to hateful quotes
 Now we can look at the attribute distributions. The most delicate ones are gender, nationality, ethnic group, religion and party. We verify how much (or how not much) represented they are. We observe that we have:
@@ -124,12 +124,26 @@ As we hypothesized, some attributes are not very relevant as they are not repres
 But it's not the only comment we can make from these observations. A reason why it would be hard to cluster the quotes to simple, englobing categories of speakers, is because there are several dozens of different values for each category, which makes that the speakers are very diverse!
 Looking more closely at the values, we notice that, for example, the most present ethnic groups are Cuban Americans, which is surprising and would most probably stem from previous filtering. The same goes even for the attributes we thought would be more useful, like gender and nationality: the most present values are groups that are usually minorities. It is striking in the case of gender: speakers labeled as male are 5, speakers labeled as women are actually one, but there are 234 speakers labeled as transgender male and 684 speakers labeled as genderqueer. This first raises the question: are minorities more hateful? A question to which we could bring the following explanations: either our hate speech filter is not specific enough, or minorities aren't hateful _per se_ but would tend to use more offensive language, and thus be detected as hateful speakers. One reason often studied is the reappropriation of insults, for example in the context of LGBTQI+ movements **[[8]](#bibliography)** or in the language used in rap music. More generally, it leads to the fact that not all offensive speech is intended as directly hateful, a problem often encountered with automated speech detection **[[9]](#bibliography)**.
 ## Chapter 2 : Hate speech is on the rise since 2016  
-Our first analysis, although superficial, we already have good insight on the data that we ectracted. Indeed, the histograms below shows the statistics on hate quotes only, and displays also the proportion of hate among the prep
+Our first analysis, although superficial, we already have good insight on the data that we extracted. Indeed, the histograms below show the statistics on hate quotes only, and also the proportion of hate among the processed dataset. This proportion amounts to approximately 0.1% of all data through the years. Yet, we observe that these quotes are oftenly relayed a lot, reaching up to a thousand relays by the news outlets per month. Hence, it seems that the content of these news outlets relies greatly on hate quotes. 
  ![statistics_hate](statistics_hate_quotes.png)
-
+Going deeper in this analysis, we wanted to study which individuals are most prone to hate speech. In this sense, we can see that the “famous” people are most represented, as depicted in the pie charts below. Indeed, politicians are shown to be the individuals whose speech contains the most hate, such as the last american president Donald Trump and the actual president of the Philippines, Rodrigo Duterte. Another class of individuals is represented by singers, such as Taylor Swift. It could make sense as people in the music industry are known to be the source of a lot of disputes, especially among artists. 
+ ![sentiment_speakers](Sentiment_speakers.png)
+Lastly, we can observe the global
+![max_hate_quotes](Speakers_with_max_hate_quotes)
 ## Chapter 3 : Correlation between major events and variation in Hate speech relay
-The CSIS and Washington Post study provided the evolution of violent terrorist attacks in the US since 2016, with their corresponding attached political orientation. We can observe a trend over the last few years that 
+The CSIS and Washington Post study provided the evolution of violent terrorist attacks in the US since 2016, with their corresponding attached political orientation. When observing the repartition of these violent attacks we can not clearly see a particular evolution over time, if it isn't a global decrease of left wing attacks. On the figures we can see both total violent crimes per month and violent crimes per month divided between far left and far right :
+![yearMonthTotal](yearMontTotal.png)
+![yearMonthLeftRight](yearMontLeftRight.png)
+The idea of this chapter is to analyze if there is a correlation between violent attacks and hateful quotes, as we have previously said our preprocessing was done in such a way that we do not have a representative sample but we still decided to see if something was to be done, a plot of hateful quotes plotted against violent attacks can be seen here :
+![hate_vs_terro](terrorism_vs_hate.png)
 
+After the computing of the correlation between the two variables, we see that there is statistically not a link here, this can also be confirmed visually by the plot. It seems that either there is really no link which seems contradictory to what we know today or and this is what we think happened,  our quotes are not representative enough of the real hateful things that have been said in the last few years.
+
+
+## Conclusion and discussion
+
+Despite our efforts, we could not precisely observe a trend over the rise of hate speech in the media, and neither a correlation between violent far-right attacks and this hateful speech. After the second filtering, we saw our data significantly decrease to a number mostly comprising marginal quotes keeping a constant trend, with the most meaningfully hateful quotes coming from alt-right politicians. This has led us to believe that our data processing is flawed from the beginning, up to our initial hypotheses. Indeed, we wanted to focus on the quotes and news outlets that shaped the political landscape the most, with a significant cut on some quotes that could have been said by anonymous voices. Some of the most hateful comments don’t come directly from politicians, but rather from independant hateful partisans of alt-right ideology. 
+Moreover, the filtering of quotes using the hatebase and sentiment analysis
 
 ## Built With
 
