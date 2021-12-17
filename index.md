@@ -13,9 +13,8 @@
 * [We throw the data around](#We-throw-the-data-around)
   * [First Filtering](#First-Filtering)
   * [Second Filtering](#Second-Filtering)
+  * [Who are the speakers?](#Speakers)
   * [Sentiment Analysis](#Sentiment-Analysis)
-  * [Parquet](#Parquet)
-* [We stare at the data until it reveals its all secrets](#We-stare-at-the-data-until-it-reveals-all-its-secrets)
 * [Built With](#built-with)
 * [Bibliography](#bibliography)
 
@@ -49,7 +48,7 @@ Our team is composed of strong believers of equality and justice for all, especi
 [Quotebank](https://zenodo.org/record/4277311#.YYqEUGXPxb8), an open corpus of 178 million quotations attributed to the speakers who uttered them, extracted from 162 million English news articles published between 2008 and 2020. To narrow down our study, we will focus on the time period between 2016 and 2020, an interval where major political events shaped the way far-right extremism is spreading in the media, while limiting the size of the dataset.
 
 #### Hatebase
-[Hatebase](https://hatebase.org/) is a dataset summarizing more than 3800 unique words in 98 different languages, that are documented in online discussions and real-world occurrences, with a constant monitoring for a total of more than 800,000 sightings in different regions of the world and internet. In order to better distinguish hate speech from the rest, we needed a dictinnary of hateful words that tends to be less biased than a homemade one for its collaborative nature.
+[Hatebase](https://hatebase.org/) is a dataset summarizing more than 3800 unique words in 98 different languages, that are documented in online discussions and real-world occurrences, with a constant monitoring for a total of more than 800,000 sightings in different regions of the world and internet. In order to better distinguish hate speech from the rest, we needed a dictionary of hateful words that tends to be less biased than a homemade one for its collaborative nature.
 
 #### CSIS database (Washington Post subset)
 In order to build our timeline, we plan on using the Washington Post study of the CSIS database **[[1]](#bibliography)** that lists major right-wing extremist incidents that happened between 1994 and 2021. This will allow us to study the correlation between the rise of these attacks and the normalization of hate speech in the media.
@@ -78,24 +77,28 @@ Yet we still face a large corpus of quotes and thus decide to select quotes from
 
 ### Second Filtering
 
-As we are interested in quotes containing hate speech, we apply a second filtering on the whole corpus of quotes, by extracting the **quotes containing a hateful keyword**.
+As we are interested in quotes containing hate speech, we apply a second filtering on the whole corpus of quotes, by extracting the **quotes containing hateful keywords**. This filtering also gives us a one-hot vector indicating the “domain” of hate, along with the number of times the word has been seen by the HateBot algorithm on the internet. Here is a sample: 
+
+![image](sample_hateframe.png)
+
+This filtering reduces drastically the size of the total dataset, from more than 1,800,000 quotes to 1445 quotes (we will come back to this result later). 
+
+
+### Sentiment Analysis
+
+After the second filtering with the hatebase, we ran a sentiment analysis on the remaining quotes in order to better narrow down hate speech. This has allowed us to 
+
 
 ### Speakers information
 
 But who are the people uttering hate speech? Information about the speakers can be found via their Wikidata QID. Wikidata are stored as a parquet file, containing attributes like the different aliases for a speaker, their date of birth, nationality, gender, ethnic group, US congress identifier, occupation, party, academic degree, candidacy, or religion. From intuition, we decide to discard attributes like US congress identifiers, candidacy or academic degree, as they only concern a small fraction of the speaker population. Whether about these discarded attributes or the remaining ones, a problem remains: the fact that not all attributes are registered in the database, even if they exist, so we must keep careful when analyzing the proportions of certain categories. But let's dive into the metadata!
 Before anything else, adding the metadata allows us to get rid of non plausible quotes from the quotes dataframe, i.e. quotes related to speakers born before 1910 (we assume that there can still be living centenarians).
 Now we can look at the attribute distributions. The most delicate ones are gender, nationality, ethnic group, religion and party. We verify how much (or how not much) represented they are. We observe that we have:
-ethnic_group: attribute defined for 141 | 41 different values
-religion: attribute defined for 171 | 39 different values
-gender: attribute defined for 933 | 8 different values
-nationality: attribute defined for 879 | 53 different values
-party: attribute defined for 240 | 57 different values
+![image](attributes.png)
 
-
-### Sentiment Analysis
-
-*Pretrained Model*:
-Lexical detection methods tend to have low precision because they classify all messages containing particular terms as hate speech and previous work using supervised learning has failed to distinguish between the two categories. We chose to use a pretrained model suited for hate speech detection called [Perspective API](https://www.perspectiveapi.com/). In particular, we will use the “Severe toxicity” metric as it is the most precise for our task [7].
+As we hypothesized, some attributes are not very relevant as they are not represented for the majority of the speakers. This concerns especially ethnic group, religion and political party, so we will not try to draw conclusions from these attributes.
+But it's not the only comment we can make from these observations. A reason why it would be hard to cluster the quotes to simple, englobing categories of speakers, is because there are several dozens of different values for each category, which makes that the speakers are very diverse!
+Looking more closely at the values, we notice that, for example, the most present ethnic groups are Cuban Americans, which is surprising and would most probably stem from previous filtering. The same goes even for the attributes we thought would be more useful, like gender and nationality: the most present values are groups that are usually minorities. It is striking in the case of gender: speakers labeled as male are 5, speakers labeled as women are actually one, but there are 234 speakers labeled as transgender male and 684 speakers labeled as genderqueer. This first raises the question: are minorities more hateful? A question to which we could bring the following explanations: either our hate speech filter is not specific enough, or minorities aren't hateful _per se_ but would tend to use more offensive language, and thus be detected as hateful speakers. One reason often studied is the reappropriation of insults, for example in the context of LGBTQI+ movements **[[8]](#bibliography)** or in the language used in rap music. More generally, it leads to the fact that not all offensive speech is intended as directly hateful, a problem often encountered with automated speech detection **[[9]](#bibliography)**.
 
 
 ## Built With
@@ -114,3 +117,5 @@ Lexical detection methods tend to have low precision because they classify all m
 5. Patriotism, Pandemic, and Precarity: How the Alt-Right and White Nationalist Movement Used the Pandemic [link](https://ecommons.udayton.edu/human_rights/2021/schedule/28/)
 6. Ditch the label and Brandwatch - Uncovered: Online Hate speech in the Covid era. [link](https://www.brandwatch.com/reports/online-hate-speech/view/)
 7. Zannettou, Savvas, Mai Elsherief, Elizabeth Belding, Shirin Nilizadeh, et Gianluca Stringhini. « Measuring and Characterizing Hate Speech on News Websites ». In 12th ACM Conference on Web Science, 125‑34. Southampton United Kingdom: ACM, 2020
+8. Cervone, C., Augoustinos, M., & Maass, A. (2021). The Language of Derogation and Hate: Functions, Consequences, and Reappropriation. _Journal of Language and Social Psychology, 40_(1), 80-101. [link](https://journals.sagepub.com/doi/full/10.1177/0261927X20967394?casa_token=QToOY04TNn0AAAAA%3AFKht680oUFkjlaT2bx-gjGYeZaje78x_Yq31q4yCBGLVpj9grsuT0dCmyo3ykZgtE3lFUyOKq0Aq9ik)
+9. Davidson, T., Warmsley, D., Macy, M., & Weber, I. (2017, May). Automated hate speech detection and the problem of offensive language. In Proceedings of the International AAAI Conference on Web and Social Media (Vol. 11, No. 1). [link](https://arxiv.org/abs/1703.04009)
