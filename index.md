@@ -3,17 +3,17 @@
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
-* [We start with Data and Questions !?](# We start with Data and Questions !?)
-  * [Research questions and hypothesis](# Research questions and hypothesis)
-  * [Data](# Data)
-   * [Quotebank](# Quotebank)
-   * [Hatebase](# Hatebase)
-   * [CSIS database (Washington Post subset)](# CSIS database (Washington Post subset))
-* [We throw the data around](# We throw the data around)
-  * [First Filtering](# First Filtering)
-  * [Second Filtering](# Second Filtering)
-  * [Sentiment Analysis](# Sentiment Analysis)
-  * [Parquet](# Parquet)
+* [We start with Data and Questions !?](#We start with Data and Questions !?)
+  * [Research questions and hypothesis](#Research questions and hypothesis)
+  * [Data](#Data)
+   * [Quotebank](#Quotebank)
+   * [Hatebase](#Hatebase)
+   * [CSIS database (Washington Post subset)](#CSIS database (Washington Post subset))
+* [We throw the data around](#We throw the data around)
+  * [First Filtering](#First Filtering)
+  * [Second Filtering](#Second Filtering)
+  * [Sentiment Analysis](#Sentiment Analysis)
+  * [Parquet](#Parquet)
 * [Built With](#built-with)
 * [Bibliography](#bibliography)
 
